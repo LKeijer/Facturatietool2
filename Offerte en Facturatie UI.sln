@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Offerte en Facturatie UI", "Offerte en Facturatie UI.csproj", "{E609808B-B53E-46EE-858D-C03B6B00CFCE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E609808B-B53E-46EE-858D-C03B6B00CFCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E609808B-B53E-46EE-858D-C03B6B00CFCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E609808B-B53E-46EE-858D-C03B6B00CFCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E609808B-B53E-46EE-858D-C03B6B00CFCE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AAD71BB3-DBE0-4A43-84EF-8D9292950D22}
+	EndGlobalSection
+EndGlobal

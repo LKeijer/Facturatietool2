@@ -1,0 +1,198 @@
+﻿<Window x:Class="Offerte_en_Facturatie_UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Offerte_en_Facturatie_UI"
+        mc:Ignorable="d"
+        Title="Offerte en Facturatie" 
+        Height="768" Width="1024" 
+        WindowStartupLocation="CenterScreen">
+
+ <!-- ToDo
+        TabItem naar collapse zetten voor de live versie -->   
+    
+    <StackPanel>
+
+        <!-- Menu balk -->
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+
+                <!-- Bestand -->
+                <MenuItem Header="Bestand">
+                    <MenuItem Header="Mijn Bedrijf"/>
+                    <MenuItem Header="Afsluiten"/>
+                </MenuItem>
+
+                <!-- Over -->
+                <MenuItem Header="Over">
+                    <MenuItem Header="Documentatie"/>
+                    <MenuItem Header="Info"/>
+                </MenuItem>
+
+            </Menu>
+        </DockPanel>
+
+        <Grid>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/> <!-- Links -->
+                <ColumnDefinition Width="5*"/> <!-- Rechts -->
+            </Grid.ColumnDefinitions>
+            
+            <!-- HoofdMenu Links -->
+            <Grid HorizontalAlignment="Left"
+                  Grid.Column="0">
+
+                <Border Padding="1">
+
+                    <StackPanel HorizontalAlignment="Left" 
+                                Width="150" 
+                                Height="700" >
+
+                        <!-- Klant -->
+                        <Grid>
+
+                            <ComboBox SelectedIndex="0" 
+                                      Padding="10" 
+                                      Margin="10 50 0 25" 
+                                      BorderThickness="3,1" >
+                                <ComboBoxItem>Klant</ComboBoxItem>
+                                <ComboBoxItem>Nieuwe Klant</ComboBoxItem>
+                                <ComboBoxItem>Klant Bekijken</ComboBoxItem>
+                                <ComboBoxItem>Klant Aanpassen</ComboBoxItem>
+                            </ComboBox>
+                        </Grid>
+
+                        <!-- Offerte -->
+                        <Grid>
+
+                            <ComboBox SelectedIndex="0"   
+                                      Padding="10" 
+                                      Margin="10 20 0 25" 
+                                      BorderThickness="3,1" >
+                                <ComboBoxItem>Offerte</ComboBoxItem>
+                                <ComboBoxItem>Nieuwe Offerte</ComboBoxItem>
+                                <ComboBoxItem>Offerte Bekijken</ComboBoxItem>
+                            </ComboBox>
+                        </Grid>
+
+                        <!-- Factuur -->
+                        <Grid>
+
+                            <ComboBox SelectedIndex="0" 
+                                      Padding="10" 
+                                      Margin="10 20 0 25" 
+                                      BorderThickness="3,1" >
+                                <ComboBoxItem>Factuur</ComboBoxItem>
+                                <ComboBoxItem>Nieuwe Factuur</ComboBoxItem>
+                                <ComboBoxItem>Factuur Bekijken</ComboBoxItem>
+                            </ComboBox>
+                        </Grid>
+
+                    </StackPanel>
+
+                </Border>
+
+            </Grid>
+
+            <Grid HorizontalAlignment="Stretch"
+                  Grid.Column="1">
+
+                <TabControl>
+                    <!-- KlantMenu Rechts -->
+                    <TabItem Header="KlantMenu" 
+                             Visibility="Visible">
+
+                        <Border Padding="1">
+
+                            <TabControl x:Name="klanttabControl">
+
+                                <!-- Nieuwe Klant -->
+                                <TabItem Header="Nieuwe Klant" 
+                                         Visibility="Visible">
+
+                                </TabItem>
+
+                                <!-- Klant Bekijken -->
+                                <TabItem Header="Klant Bekijken" 
+                                         Visibility="Visible">
+
+                                </TabItem>
+
+                                <!-- Klant Aanpassen -->
+                                <TabItem Header="Klant Aanpassen" 
+                                         Visibility="Visible">
+
+                                </TabItem>
+
+                            </TabControl>
+
+                        </Border>
+
+                    </TabItem>
+
+                    <!-- OfferteMenu Rechts -->
+                    <TabItem Header="OfferteMenu" 
+                             Visibility="Visible">
+
+                        <Border Padding="1">
+
+                            <TabControl x:Name="offertetabControl">
+
+                                <!-- Nieuwe Offerte -->
+                                <TabItem Header="Nieuwe Offerte" 
+                                         Visibility="Visible">
+
+                                </TabItem>
+
+                                <!-- Offerte Bekijken -->
+                                <TabItem Header="Offerte Bekijken" 
+                                         Visibility="Visible">
+
+                                </TabItem>
+
+                            </TabControl>
+
+                        </Border>
+
+                    </TabItem>
+
+                    <!-- Factuurmenu Rechts -->
+                    <TabItem Header="FactuurMenu" 
+                             Visibility="Visible">
+
+                        <Border Padding="1">
+
+                            <TabControl x:Name="factuurtabControl">
+
+                                <!-- Nieuwe Factuur -->
+                                <TabItem Header="Nieuwe Factuur" 
+                                         Visibility="Visible">
+
+                                </TabItem>
+
+                                <!-- Factuur Bekijken -->
+                                <TabItem Header="Factuur Bekijken" 
+                                         Visibility="Visible">
+
+                                </TabItem>
+
+                            </TabControl>
+
+                        </Border>
+
+                    </TabItem>
+                    
+                </TabControl>
+
+            </Grid>
+            
+        </Grid>
+
+    </StackPanel>
+
+
+
+
+</Window>
