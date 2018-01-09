@@ -6,31 +6,31 @@
         xmlns:local="clr-namespace:Offerte_en_Facturatie_UI"
         mc:Ignorable="d"
         Title="Offerte en Facturatie" 
-        Height="768" Width="1024" 
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" Width="1024" Height="768">
 
- <!-- ToDo
+    <!-- ToDo
         TabItem naar collapse zetten voor de live versie -->
+    <Grid>
+        <StackPanel>
+            <!-- Menu balk -->
+            <DockPanel>
+                <Menu DockPanel.Dock="Top">
+                    <!-- Bestand -->
+                    <MenuItem x:Name="menuBestand" Header="Bestand">
+                        <MenuItem x:Name="menuMijnBedrijf" Header="Mijn Bedrijf"/>
+                        <MenuItem x:Name="menuAfsluiten" Header="Afsluiten"/>
+                    </MenuItem>
 
-    <StackPanel>
-        <!-- Menu balk -->
-        <DockPanel>
-            <Menu DockPanel.Dock="Top">
-                <!-- Bestand -->
-                <MenuItem Header="Bestand">
-                    <MenuItem Header="Mijn Bedrijf"/>
-                    <MenuItem Header="Afsluiten"/>
-                </MenuItem>
-
-                <!-- Over -->
-                <MenuItem Header="Over">
-                    <MenuItem Header="Documentatie"/>
-                    <MenuItem Header="Info"/>
-                </MenuItem>
-            </Menu>
-        </DockPanel>
-
-        <Grid>
+                    <!-- Over -->
+                    <MenuItem x:Name="menuOver" Header="Over">
+                        <MenuItem x:Name="menuDocumentatie" Header="Documentatie"/>
+                        <MenuItem x:Name="menuInfo" Header="Info"/>
+                    </MenuItem>
+                </Menu>
+            </DockPanel>
+        </StackPanel>
+        
+        <Grid Margin="0 18 0 0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <!-- Links -->
@@ -38,13 +38,13 @@
                 <!-- Rechts -->
             </Grid.ColumnDefinitions>
 
-            <!-- HoofdMenu Links -->
+            <!-- Hoofd/NavigatieMenu Links -->
             <Grid Grid.Column="0"
                   VerticalAlignment="Stretch">
 
                 <Border Padding="1">
                     <StackPanel Width="150">
-                        <!-- Klant -->
+                        <!-- Klant Menu -->
                         <Grid>
                             <ComboBox SelectedIndex="0"
                                       HorizontalContentAlignment="Center"
@@ -52,13 +52,13 @@
                                       Margin="10 50 0 25" 
                                       BorderThickness="3,1" >
                                 <ComboBoxItem>Klant</ComboBoxItem>
-                                <ComboBoxItem>Nieuwe Klant</ComboBoxItem>
-                                <ComboBoxItem>Klant Bekijken</ComboBoxItem>
-                                <ComboBoxItem>Klant Aanpassen</ComboBoxItem>
+                                <ComboBoxItem x:Name="btn_NieuweKlant">Nieuwe Klant</ComboBoxItem>
+                                <ComboBoxItem x:Name="btn_KlantBekijken">Klant Bekijken</ComboBoxItem>
+                                <ComboBoxItem x:Name="btn_KlantAanpassen">Klant Aanpassen</ComboBoxItem>
                             </ComboBox>
                         </Grid>
 
-                        <!-- Offerte -->
+                        <!-- Offerte Menu -->
                         <Grid>
                             <ComboBox SelectedIndex="0"
                                       HorizontalContentAlignment="Center"
@@ -66,12 +66,12 @@
                                       Margin="10 20 0 25" 
                                       BorderThickness="3,1" >
                                 <ComboBoxItem>Offerte</ComboBoxItem>
-                                <ComboBoxItem>Nieuwe Offerte</ComboBoxItem>
-                                <ComboBoxItem>Offerte Bekijken</ComboBoxItem>
+                                <ComboBoxItem x:Name="btn_NieuweOfferte">Nieuwe Offerte</ComboBoxItem>
+                                <ComboBoxItem x:Name="btn_OfferteBekijken">Offerte Bekijken</ComboBoxItem>
                             </ComboBox>
                         </Grid>
 
-                        <!-- Factuur -->
+                        <!-- Factuur Menu -->
                         <Grid>
                             <ComboBox SelectedIndex="0"
                                       HorizontalContentAlignment="Center"
@@ -79,57 +79,65 @@
                                       Margin="10 20 0 25" 
                                       BorderThickness="3,1" >
                                 <ComboBoxItem>Factuur</ComboBoxItem>
-                                <ComboBoxItem>Nieuwe Factuur</ComboBoxItem>
-                                <ComboBoxItem>Factuur Bekijken</ComboBoxItem>
+                                <ComboBoxItem x:Name="btn_NieweFactuur">Nieuwe Factuur</ComboBoxItem>
+                                <ComboBoxItem x:Name="btn_FactuurBekijken">Factuur Bekijken</ComboBoxItem>
                             </ComboBox>
                         </Grid>
                     </StackPanel>
                 </Border>
             </Grid>
 
-            <Grid HorizontalAlignment="Stretch"
-                  Grid.Column="1">
+            <!-- KlantMenu Rechts -->
+            <Grid Grid.Column="1">
 
                 <TabControl>
-                    <!-- KlantMenu Rechts -->
                     <TabItem Header="KlantMenu" 
                              Visibility="Visible">
-                        <Border Padding="1">
-                            <TabControl x:Name="klanttabControl">
-                                
-                                <!-- Nieuwe Klant -->
-                                <TabItem Header="Nieuwe Klant" 
-                                         Visibility="Visible">
+
+                        <TabControl x:Name="klanttabControl">
+                            <!-- Nieuwe Klant -->
+                            <TabItem x:Name="tab_NieuweKlant" 
+                                     Header="Nieuwe Klant" 
+                                     Visibility="Visible">
+                                <Grid>
+                                    <Label Content="Voer klantgegevens in en klik op accepteer om de klant aan de database toe te voegen."
+                                           Padding="5"
+                                           HorizontalAlignment="Stretch"
+                                           VerticalAlignment="Top"
+                                           HorizontalContentAlignment="Center"
+                                           Background="LightGray"/>
                                     
-                                    <StackPanel>
-                                        <Label Content="Voer klantgegevens in en klik op accepteer om de klant aan de database toe te voegen."
-                                               Padding="5"
-                                               HorizontalAlignment="Stretch"
-                                               HorizontalContentAlignment="Center"
-                                               Background="LightGray"/>
+                                    <StackPanel HorizontalAlignment="Center" 
+                                                VerticalAlignment="Center">
 
-                                        <StackPanel HorizontalAlignment="Center"
+                                    <!-- Formulier1 Nieuwe Klant -->
+                                    <Grid>
+                                        <StackPanel x:Name="Form1"
                                                     Background="LightGray"
-                                                    Margin="0 10 0 10"
                                                     Width="500">
-                                            <Grid HorizontalAlignment="Stretch">
+
+                                            <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="*"/>
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
 
+                                                <!-- Bedrijfsnaam -->
                                                 <StackPanel Grid.Column="0">
                                                     <TextBlock Text="Bedrijfsnaam"
-                                                               Margin="10 10 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
+                                                           Margin="10 10 0 0"/>
+                                                    <TextBox x:Name="Form1_Bedrijfsnaam" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
                                                 </StackPanel>
 
+                                                <!-- Klant Nummer -->
                                                 <StackPanel Grid.Column="1">
-                                                    <TextBlock Text="Klant nummer"
-                                                               Margin="10 10 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
+                                                    <TextBlock Text="Klant Nummer"
+                                                           Margin="10 10 0 0"/>
+                                                    <TextBox x:Name="Form1_KlantNummer" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
                                                 </StackPanel>
                                             </Grid>
 
@@ -139,18 +147,22 @@
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
 
+                                                <!-- KvK Nummer -->
                                                 <StackPanel Grid.Column="0">
                                                     <TextBlock Text="KvK nummer"
-                                                               Margin="10 10 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
+                                                           Margin="10 10 0 0"/>
+                                                    <TextBox x:Name="Form1_KvKNummer" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
                                                 </StackPanel>
 
+                                                <!-- BTW Nummer -->
                                                 <StackPanel Grid.Column="1">
                                                     <TextBlock Text="BTW nummer"
-                                                               Margin="10 10 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
+                                                           Margin="10 10 0 0"/>
+                                                    <TextBox x:Name="Form1_BTWNummer" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
                                                 </StackPanel>
                                             </Grid>
 
@@ -161,25 +173,31 @@
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
 
+                                                <!-- Voornaam -->
                                                 <StackPanel Grid.Column="0">
-                                                    <TextBlock Text="Contacpersoon Voornaam"
-                                                               Margin="10 15 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
+                                                    <TextBlock Text="Contactpersoon Voornaam"
+                                                           Margin="10 15 0 0"/>
+                                                    <TextBox x:Name="Form1_ContactVoornaam" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
                                                 </StackPanel>
 
+                                                <!-- tussenvoegsel -->
                                                 <StackPanel Grid.Column="1">
                                                     <TextBlock Text="tussenvoegsel"
-                                                               Margin="10 15 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
+                                                           Margin="10 15 0 0"/>
+                                                    <TextBox x:Name="Form1_tussenvoegsel" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
                                                 </StackPanel>
 
+                                                <!-- Achternaam -->
                                                 <StackPanel Grid.Column="2">
                                                     <TextBlock Text="Achternaam"
-                                                               Margin="10 15 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
+                                                           Margin="10 15 0 0"/>
+                                                    <TextBox x:Name="Form1_Achternaam" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
                                                 </StackPanel>
                                             </Grid>
 
@@ -190,25 +208,31 @@
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
 
+                                                <!-- Straatnaam -->
                                                 <StackPanel Grid.Column="0">
                                                     <TextBlock Text="Straatnaam"
-                                                               Margin="10 5 0 0"/>
-                                                    <TextBox Padding="2"
-                                                              Margin="10 0 10 0"/>
+                                                           Margin="10 5 0 0"/>
+                                                    <TextBox x:Name="Form1_Straatnaam" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
                                                 </StackPanel>
 
+                                                <!-- Huisnummer -->
                                                 <StackPanel Grid.Column="1">
                                                     <TextBlock Text="Huisnummer"
-                                                               Margin="10 5 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
+                                                           Margin="10 5 0 0"/>
+                                                    <TextBox x:Name="Form1_Huisnummer" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
                                                 </StackPanel>
 
+                                                <!-- Toevoeging -->
                                                 <StackPanel Grid.Column="2">
                                                     <TextBlock Text="Toevoeging"
-                                                               Margin="10 5 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
+                                                           Margin="10 5 0 0"/>
+                                                    <TextBox x:Name="Form1_Toevoeging" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
                                                 </StackPanel>
                                             </Grid>
 
@@ -218,18 +242,22 @@
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
 
+                                                <!-- Postcode -->
                                                 <StackPanel Grid.Column="0">
                                                     <TextBlock Text="Postcode"
-                                                               Margin="10 5 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
+                                                           Margin="10 5 0 0"/>
+                                                    <TextBox x:Name="Form1_Postcode" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
                                                 </StackPanel>
 
+                                                <!-- Plaats -->
                                                 <StackPanel Grid.Column="1">
                                                     <TextBlock Text="Plaats"
-                                                               Margin="10 5 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
+                                                           Margin="10 5 0 0"/>
+                                                    <TextBox x:Name="Form1_Plaats" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
                                                 </StackPanel>
                                             </Grid>
 
@@ -240,38 +268,47 @@
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
 
+                                                <!-- Telefoon Nummer -->
                                                 <StackPanel Grid.Column="0">
                                                     <TextBlock Text="Telefoon nummer"
-                                                               Margin="10 10 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
+                                                           Margin="10 10 0 0"/>
+                                                    <TextBox x:Name="Form1_TelNummer" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
                                                 </StackPanel>
 
+                                                <!-- Fax Nummer -->
                                                 <StackPanel Grid.Column="1">
-                                                    <TextBlock Text="Faxnummer"
-                                                               Margin="10 10 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
+                                                    <TextBlock Text="Fax Nummer"
+                                                           Margin="10 10 0 0"/>
+                                                    <TextBox x:Name="Form1_FaxNummer" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
                                                 </StackPanel>
 
+                                                <!-- E-Mail -->
                                                 <StackPanel Grid.Column="2">
                                                     <TextBlock Text="E-Mail adres"
-                                                               Margin="10 10 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
+                                                           Margin="10 10 0 0"/>
+                                                    <TextBox x:Name="Form1_EMail" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
                                                 </StackPanel>
                                             </Grid>
 
                                             <Grid HorizontalAlignment="Stretch">
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="61*"/>
+                                                    <ColumnDefinition Width="439*"/>
                                                 </Grid.ColumnDefinitions>
 
-                                                <StackPanel Grid.Column="0">
+                                                <!-- Website -->
+                                                <StackPanel Grid.Column="0" Grid.ColumnSpan="2">
                                                     <TextBlock Text="Website"
-                                                               Margin="10 15 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 10"/>
+                                                           Margin="10 15 0 0"/>
+                                                    <TextBox x:Name="Form1_Website" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 10"/>
                                                 </StackPanel>
                                             </Grid>
 
@@ -281,233 +318,280 @@
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
 
-                                                <Button Content="Accepteer"
-                                                        Background="LightBlue"
-                                                        Grid.Column="0"/>
-                                                <Button Content="Annuleer"
-                                                        Background="IndianRed"
-                                                        Grid.Column="1"/>
+                                                <!-- Accepteer -->
+                                                <Button x:Name="Form1_btnAccepteer" 
+                                                    Content="Accepteer"
+                                                    Background="LightBlue"
+                                                    Grid.Column="0"/>
+                                                <!-- Annuleer -->
+                                                <Button x:Name="Form1_btnAnnuleer" 
+                                                    Content="Annuleer"
+                                                    Background="IndianRed"
+                                                    Grid.Column="1"/>
                                             </Grid>
                                         </StackPanel>
+                                    </Grid>
 
+                                </StackPanel>
+                                </Grid>
+                            </TabItem>
+
+                            <!-- Klant Bekijken -->
+                            <TabItem x:Name="tab_KlantBekijken" 
+                                     Header="Klant Bekijken" 
+                                     Visibility="Visible">
+                                <StackPanel>
+                                    <Label Content="Voer klant referentie nummer in of zoek op naam."
+                                           Padding="5"
+                                           HorizontalAlignment="Stretch"
+                                           HorizontalContentAlignment="Center"
+                                           Background="LightGray"/>
+
+                                    <!-- Zoekbalk Klant -->
+                                    <StackPanel HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Margin="0 50 0 50">
+
+                                        <TextBox x:Name="ZoekbalkKlant"
+                                                 Padding="2"
+                                                 Width="100"/>
                                     </StackPanel>
-                                </TabItem>
+                                </StackPanel>
+                            </TabItem>
 
-                                <!-- Klant Bekijken -->
-                                <TabItem Header="Klant Bekijken" 
-                                         Visibility="Visible">
-                                    <StackPanel>
-                                        <Label Content="Voer klant referentie nummer in of zoek op naam."
-                                               Padding="5"
-                                               HorizontalAlignment="Stretch"
-                                               HorizontalContentAlignment="Center"
-                                               Background="LightGray"/>
+                            <!-- Klant Aanpassen -->
+                            <TabItem x:Name="tab_KlantAanpassen" 
+                                     Header="Klant Aanpassen" 
+                                     Visibility="Visible">
+                                <StackPanel>
+                                    <Label Content="Wijzig klant gegevens en klik op accepteer om door te voeren in de database."
+                                           Padding="5"
+                                           HorizontalAlignment="Stretch"
+                                           HorizontalContentAlignment="Center"
+                                           Background="LightGray"/>
 
-                                        <StackPanel Background="LightSlateGray"
-                                                    HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center"
-                                                    Margin="0 50 0 50">
+                                    <!-- Formulier2 Klant Aanpassen -->
+                                    <StackPanel HorizontalAlignment="Center"
+                                                Background="LightGray"
+                                                Margin="0 10 0 10"
+                                                Width="500">
+                                        <Grid HorizontalAlignment="Stretch">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
 
-                                        </StackPanel>
+                                            <!-- Bedrijfsnaam -->
+                                            <StackPanel Grid.Column="0">
+                                                <TextBlock Text="Bedrijfsnaam"
+                                                           Margin="10 10 0 0"/>
+                                                <TextBox x:Name="Form2_Bedrijfsnaam" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
+                                            </StackPanel>
+
+                                            <!-- Klant Nummer -->
+                                            <StackPanel Grid.Column="1">
+                                                <TextBlock Text="Klant Nummer"
+                                                           Margin="10 10 0 0"/>
+                                                <TextBox x:Name="Form2_KlantNummer" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
+                                            </StackPanel>
+                                        </Grid>
+
+                                        <Grid HorizontalAlignment="Stretch">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- KvK Nummer -->
+                                            <StackPanel Grid.Column="0">
+                                                <TextBlock Text="KvK nummer"
+                                                           Margin="10 10 0 0"/>
+                                                <TextBox x:Name="Form2_KvKNummer" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
+                                            </StackPanel>
+
+                                            <!-- BTW Nummer -->
+                                            <StackPanel Grid.Column="1">
+                                                <TextBlock Text="BTW nummer"
+                                                           Margin="10 10 0 0"/>
+                                                <TextBox x:Name="Form2_BTWNummer" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
+                                            </StackPanel>
+                                        </Grid>
+
+                                        <Grid HorizontalAlignment="Stretch">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- Voornaam -->
+                                            <StackPanel Grid.Column="0">
+                                                <TextBlock Text="Contactpersoon Voornaam"
+                                                           Margin="10 15 0 0"/>
+                                                <TextBox x:Name="Form2_ContactVoornaam" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
+                                            </StackPanel>
+
+                                            <!-- tussenvoegsel -->
+                                            <StackPanel Grid.Column="1">
+                                                <TextBlock Text="tussenvoegsel"
+                                                           Margin="10 15 0 0"/>
+                                                <TextBox x:Name="Form2_tussenvoegsel" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
+                                            </StackPanel>
+
+                                            <!-- Achternaam -->
+                                            <StackPanel Grid.Column="2">
+                                                <TextBlock Text="Achternaam"
+                                                           Margin="10 15 0 0"/>
+                                                <TextBox x:Name="Form2_Achternaam" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
+                                            </StackPanel>
+                                        </Grid>
+
+                                        <Grid HorizontalAlignment="Stretch">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- Straatnaam -->
+                                            <StackPanel Grid.Column="0">
+                                                <TextBlock Text="Straatnaam"
+                                                           Margin="10 5 0 0"/>
+                                                <TextBox x:Name="Form2_Straatnaam" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
+                                            </StackPanel>
+
+                                            <!-- Huisnummer -->
+                                            <StackPanel Grid.Column="1">
+                                                <TextBlock Text="Huisnummer"
+                                                           Margin="10 5 0 0"/>
+                                                <TextBox x:Name="Form2_Huisnummer" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
+                                            </StackPanel>
+
+                                            <!-- Toevoeging -->
+                                            <StackPanel Grid.Column="2">
+                                                <TextBlock Text="Toevoeging"
+                                                           Margin="10 5 0 0"/>
+                                                <TextBox x:Name="Form2_Toevoeging" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
+                                            </StackPanel>
+                                        </Grid>
+
+                                        <Grid HorizontalAlignment="Stretch">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- Postcode -->
+                                            <StackPanel Grid.Column="0">
+                                                <TextBlock Text="Postcode"
+                                                           Margin="10 5 0 0"/>
+                                                <TextBox x:Name="Form2_Postcode" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
+                                            </StackPanel>
+
+                                            <!-- Plaats -->
+                                            <StackPanel Grid.Column="1">
+                                                <TextBlock Text="Plaats"
+                                                           Margin="10 5 0 0"/>
+                                                <TextBox x:Name="Form2_Plaats" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
+                                            </StackPanel>
+                                        </Grid>
+
+                                        <Grid HorizontalAlignment="Stretch">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- Telefoon Nummer -->
+                                            <StackPanel Grid.Column="0">
+                                                <TextBlock Text="Telefoon nummer"
+                                                           Margin="10 10 0 0"/>
+                                                <TextBox x:Name="Form2_TelNummer" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
+                                            </StackPanel>
+
+                                            <!-- Fax Nummer -->
+                                            <StackPanel Grid.Column="1">
+                                                <TextBlock Text="Fax Nummer"
+                                                           Margin="10 10 0 0"/>
+                                                <TextBox x:Name="Form2_FaxNummer" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
+                                            </StackPanel>
+
+                                            <!-- E-Mail -->
+                                            <StackPanel Grid.Column="2">
+                                                <TextBlock Text="E-Mail adres"
+                                                           Margin="10 10 0 0"/>
+                                                <TextBox x:Name="Form2_EMail" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 0"/>
+                                            </StackPanel>
+                                        </Grid>
+
+                                        <Grid HorizontalAlignment="Stretch">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- Website -->
+                                            <StackPanel Grid.Column="0">
+                                                <TextBlock Text="Website"
+                                                           Margin="10 15 0 0"/>
+                                                <TextBox x:Name="Form2_Website" 
+                                                         Padding="2"
+                                                         Margin="10 0 10 10"/>
+                                            </StackPanel>
+                                        </Grid>
+
+                                        <Grid Margin="10 15 10 10">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- Accepteer -->
+                                            <Button x:Name="Form2_btnAccepteer" 
+                                                    Content="Accepteer"
+                                                    Background="LightBlue"
+                                                    Grid.Column="0"/>
+                                            <!-- Annuleer -->
+                                            <Button x:Name="Form2_btnAnnuleer" 
+                                                    Content="Annuleer"
+                                                    Background="IndianRed"
+                                                    Grid.Column="1"/>
+                                        </Grid>
                                     </StackPanel>
-                                </TabItem>
 
-                                <!-- Klant Aanpassen -->
-                                <TabItem Header="Klant Aanpassen" 
-                                         Visibility="Visible">
-                                    <StackPanel>
-                                        <Label Content="Wijzig klant gegevens en klik op accepteer om door te voeren in de database."
-                                               Padding="5"
-                                               HorizontalAlignment="Stretch"
-                                               HorizontalContentAlignment="Center"
-                                               Background="LightGray"/>
-
-                                        <StackPanel HorizontalAlignment="Center"
-                                                    Background="LightGray"
-                                                    Margin="0 10 0 10"
-                                                    Width="500">
-                                            <Grid HorizontalAlignment="Stretch">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                </Grid.ColumnDefinitions>
-
-                                                <StackPanel Grid.Column="0">
-                                                    <TextBlock Text="Bedrijfsnaam"
-                                                               Margin="10 10 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
-                                                </StackPanel>
-
-                                                <StackPanel Grid.Column="1">
-                                                    <TextBlock Text="Klant nummer"
-                                                               Margin="10 10 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
-                                                </StackPanel>
-                                            </Grid>
-
-                                            <Grid HorizontalAlignment="Stretch">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                </Grid.ColumnDefinitions>
-
-                                                <StackPanel Grid.Column="0">
-                                                    <TextBlock Text="KvK nummer"
-                                                               Margin="10 10 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
-                                                </StackPanel>
-
-                                                <StackPanel Grid.Column="1">
-                                                    <TextBlock Text="BTW nummer"
-                                                               Margin="10 10 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
-                                                </StackPanel>
-                                            </Grid>
-
-                                            <Grid HorizontalAlignment="Stretch">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                </Grid.ColumnDefinitions>
-
-                                                <StackPanel Grid.Column="0">
-                                                    <TextBlock Text="Contacpersoon Voornaam"
-                                                               Margin="10 15 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
-                                                </StackPanel>
-
-                                                <StackPanel Grid.Column="1">
-                                                    <TextBlock Text="tussenvoegsel"
-                                                               Margin="10 15 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
-                                                </StackPanel>
-
-                                                <StackPanel Grid.Column="2">
-                                                    <TextBlock Text="Achternaam"
-                                                               Margin="10 15 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
-                                                </StackPanel>
-                                            </Grid>
-
-                                            <Grid HorizontalAlignment="Stretch">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                </Grid.ColumnDefinitions>
-
-                                                <StackPanel Grid.Column="0">
-                                                    <TextBlock Text="Straatnaam"
-                                                               Margin="10 5 0 0"/>
-                                                    <TextBox Padding="2"
-                                                              Margin="10 0 10 0"/>
-                                                </StackPanel>
-
-                                                <StackPanel Grid.Column="1">
-                                                    <TextBlock Text="Huisnummer"
-                                                               Margin="10 5 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
-                                                </StackPanel>
-
-                                                <StackPanel Grid.Column="2">
-                                                    <TextBlock Text="Toevoeging"
-                                                               Margin="10 5 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
-                                                </StackPanel>
-                                            </Grid>
-
-                                            <Grid HorizontalAlignment="Stretch">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                </Grid.ColumnDefinitions>
-
-                                                <StackPanel Grid.Column="0">
-                                                    <TextBlock Text="Postcode"
-                                                               Margin="10 5 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
-                                                </StackPanel>
-
-                                                <StackPanel Grid.Column="1">
-                                                    <TextBlock Text="Plaats"
-                                                               Margin="10 5 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
-                                                </StackPanel>
-                                            </Grid>
-
-                                            <Grid HorizontalAlignment="Stretch">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                </Grid.ColumnDefinitions>
-
-                                                <StackPanel Grid.Column="0">
-                                                    <TextBlock Text="Telefoon nummer"
-                                                               Margin="10 10 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
-                                                </StackPanel>
-
-                                                <StackPanel Grid.Column="1">
-                                                    <TextBlock Text="Faxnummer"
-                                                               Margin="10 10 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
-                                                </StackPanel>
-
-                                                <StackPanel Grid.Column="2">
-                                                    <TextBlock Text="E-Mail adres"
-                                                               Margin="10 10 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 0"/>
-                                                </StackPanel>
-                                            </Grid>
-
-                                            <Grid HorizontalAlignment="Stretch">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*"/>
-                                                </Grid.ColumnDefinitions>
-
-                                                <StackPanel Grid.Column="0">
-                                                    <TextBlock Text="Website"
-                                                               Margin="10 15 0 0"/>
-                                                    <TextBox Padding="2"
-                                                             Margin="10 0 10 10"/>
-                                                </StackPanel>
-                                            </Grid>
-
-                                            <Grid Margin="10 15 10 10">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                </Grid.ColumnDefinitions>
-
-                                                <Button Content="Accepteer"
-                                                        Background="LightBlue"
-                                                        Grid.Column="0"/>
-                                                <Button Content="Annuleer"
-                                                        Background="IndianRed"
-                                                        Grid.Column="1"/>
-                                            </Grid>
-                                        </StackPanel>
-                                        
-                                    </StackPanel>
-                                </TabItem>
-                            </TabControl>
-                        </Border>
+                                </StackPanel>
+                            </TabItem>
+                        </TabControl>
                     </TabItem>
 
                     <!-- OfferteMenu Rechts -->
@@ -515,9 +599,11 @@
                              Visibility="Visible">
                         <Border Padding="1">
                             <TabControl x:Name="offertetabControl">
+                                
                                 <!-- Nieuwe Offerte -->
                                 <TabItem Header="Nieuwe Offerte" 
                                          Visibility="Visible">
+                                    
                                     <StackPanel>
                                         <Label Content="Maak een nieuwe offerte aan."
                                                Padding="5"
@@ -537,6 +623,7 @@
                                 <!-- Offerte Bekijken -->
                                 <TabItem Header="Offerte Bekijken" 
                                          Visibility="Visible">
+                                    
                                     <StackPanel>
                                         <Label Content="Zoek op offerte nummer."
                                                Padding="5"
@@ -544,10 +631,15 @@
                                                HorizontalContentAlignment="Center"
                                                Background="LightGray"/>
 
+                                        <!-- Zoekbalk Offerte -->
                                         <StackPanel Background="LightSlateGray"
                                                     HorizontalAlignment="Center"
                                                     VerticalAlignment="Center"
                                                     Margin="0 50 0 50">
+
+                                            <TextBox x:Name="ZoekbalkOfferte"
+                                                     Padding="2"
+                                                     Width="100"/>
 
                                         </StackPanel>
                                     </StackPanel>
@@ -561,6 +653,7 @@
                              Visibility="Visible">
                         <Border Padding="1">
                             <TabControl x:Name="factuurtabControl">
+                                
                                 <!-- Nieuwe Factuur -->
                                 <TabItem Header="Nieuwe Factuur" 
                                          Visibility="Visible">
@@ -591,10 +684,15 @@
                                                HorizontalContentAlignment="Center"
                                                Background="LightGray"/>
 
+                                        <!-- Zoekbalk Factuur -->
                                         <StackPanel Background="LightSlateGray"
                                                     HorizontalAlignment="Center"
                                                     VerticalAlignment="Center"
                                                     Margin="0 50 0 50">
+
+                                            <TextBox x:Name="ZoekbalkFactuur"
+                                                     Padding="2"
+                                                     Width="100"/>
 
                                         </StackPanel>
                                     </StackPanel>
@@ -604,10 +702,10 @@
                         </Border>
                     </TabItem>
                 </TabControl>
-                
+
             </Grid>
         </Grid>
-    </StackPanel>
+    </Grid>
 
 
 
