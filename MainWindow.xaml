@@ -46,46 +46,57 @@
                   VerticalAlignment="Stretch">
 
                 <Border Padding="1">
-                    <StackPanel Width="150">
-                        <!-- Klant Menu -->
-                        <Grid>
-                            <ComboBox SelectedIndex="0"
-                                      HorizontalContentAlignment="Center"
-                                      Padding="10"
-                                      Margin="10 50 0 25" 
-                                      BorderThickness="3,1" >
-                                <ComboBoxItem>Klant</ComboBoxItem>
-                                <ComboBoxItem x:Name="btn_NieuweKlant">Nieuwe Klant</ComboBoxItem>
-                                <ComboBoxItem x:Name="btn_KlantBekijken">Klant Bekijken</ComboBoxItem>
-                                <ComboBoxItem x:Name="btn_KlantAanpassen">Klant Aanpassen</ComboBoxItem>
-                            </ComboBox>
-                        </Grid>
+                    <StackPanel Width="150"
+                                Margin="0 30">
+                        <!-- Klant Menu -->    
+                            <Button Content="Klant"
+                                    Click="Button_Click"
+                                    ContextMenuService.IsEnabled="False"
+                                    HorizontalAlignment="Center"
+                                    Width="125"
+                                    Height="30"
+                                    Margin="10">
+                                <Button.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Nieuwe Klant"/>
+                                        <MenuItem Header="Klant Bekijken"/>
+                                        <MenuItem Header="Klant Aanpassen"/>
+                                    </ContextMenu>
+                                </Button.ContextMenu>
+                            </Button>
 
-                        <!-- Offerte Menu -->
-                        <Grid>
-                            <ComboBox SelectedIndex="0"
-                                      HorizontalContentAlignment="Center"
-                                      Padding="10" 
-                                      Margin="10 20 0 25" 
-                                      BorderThickness="3,1" >
-                                <ComboBoxItem>Offerte</ComboBoxItem>
-                                <ComboBoxItem x:Name="btn_NieuweOfferte">Nieuwe Offerte</ComboBoxItem>
-                                <ComboBoxItem x:Name="btn_OfferteBekijken">Offerte Bekijken</ComboBoxItem>
-                            </ComboBox>
-                        </Grid>
+                            <!-- Offerte Menu -->
+                            <Button Content="Offerte"
+                                    Click="Button_Click"
+                                    ContextMenuService.IsEnabled="False"
+                                    HorizontalAlignment="Center"
+                                    Width="125"
+                                    Height="30"
+                                    Margin="10">
+                                <Button.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Nieuwe Offerte"/>
+                                        <MenuItem Header="Offerte Bekijken"/>
+                                    </ContextMenu>
+                                </Button.ContextMenu>
+                            </Button>
 
                         <!-- Factuur Menu -->
-                        <Grid>
-                            <ComboBox SelectedIndex="0"
-                                      HorizontalContentAlignment="Center"
-                                      Padding="10" 
-                                      Margin="10 20 0 25" 
-                                      BorderThickness="3,1" >
-                                <ComboBoxItem>Factuur</ComboBoxItem>
-                                <ComboBoxItem x:Name="btn_NieweFactuur">Nieuwe Factuur</ComboBoxItem>
-                                <ComboBoxItem x:Name="btn_FactuurBekijken">Factuur Bekijken</ComboBoxItem>
-                            </ComboBox>
-                        </Grid>
+                            <Button Content="Offerte"
+                                    Click="Button_Click"
+                                    ContextMenuService.IsEnabled="False"
+                                    HorizontalAlignment="Center"
+                                    Width="125"
+                                    Height="30"
+                                    Margin="10">
+                                <Button.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Nieuwe Factuur"/>
+                                        <MenuItem Header="Factuur Bekijken"/>
+                                    </ContextMenu>
+                                </Button.ContextMenu>
+                            </Button>
+
                     </StackPanel>
                 </Border>
             </Grid>
@@ -343,6 +354,7 @@
                             <TabItem x:Name="tab_KlantBekijken" 
                                      Header="Klant Bekijken" 
                                      Visibility="Visible">
+                                
                                 <Grid>
                                     <Label Content="Voer klant referentie nummer in of zoek op naam."
                                            Padding="5"
@@ -649,17 +661,18 @@
                             <TabItem Header="Offerte Bekijken" 
                                      Visibility="Visible">
                                 
-                                <StackPanel>
+                                <Grid>
                                     <Label Content="Zoek op offerte nummer."
                                            Padding="5"
                                            HorizontalAlignment="Stretch"
                                            HorizontalContentAlignment="Center"
+                                           VerticalAlignment="Top"
                                            Background="LightGray"/>
 
                                     <!-- Zoekbalk Offerte -->
                                     <StackPanel Background="LightSlateGray"
                                                 HorizontalAlignment="Center"
-                                                VerticalAlignment="Center"
+                                                VerticalAlignment="Top"
                                                 Margin="0 50 0 50">
 
                                         <TextBox x:Name="ZoekbalkOfferte"
@@ -667,7 +680,22 @@
                                                  Width="100"/>
 
                                     </StackPanel>
-                                </StackPanel>
+                                    <StackPanel VerticalAlignment="Center">
+
+                                        <DataGrid x:Name="datagrid_OfferteBekijken"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  Width="750"
+                                                  Height="500"
+                                                  RowHeight="20"
+                                                  ColumnWidth="100"
+                                                  GridLinesVisibility="All"
+                                                  HeadersVisibility="All"
+                                                  Background="LightGray"
+                                                  RowBackground="White"
+                                                  AlternatingRowBackground="LightGray"/>
+                                    </StackPanel>
+                                </Grid>
                             </TabItem>
                         </TabControl>
                     </TabItem>
@@ -700,17 +728,19 @@
                             <!-- Factuur Bekijken -->
                             <TabItem Header="Factuur Bekijken" 
                                      Visibility="Visible">
-                                <StackPanel>
+                                
+                                <Grid>
                                     <Label Content="Zoek op factuur nummer."
                                            Padding="5"
                                            HorizontalAlignment="Stretch"
                                            HorizontalContentAlignment="Center"
+                                           VerticalAlignment="Top"
                                            Background="LightGray"/>
 
                                     <!-- Zoekbalk Factuur -->
                                     <StackPanel Background="LightSlateGray"
                                                 HorizontalAlignment="Center"
-                                                VerticalAlignment="Center"
+                                                VerticalAlignment="Top"
                                                 Margin="0 50 0 50">
 
                                         <TextBox x:Name="ZoekbalkFactuur"
@@ -718,7 +748,23 @@
                                                  Width="100"/>
 
                                     </StackPanel>
-                                </StackPanel>
+                                    <StackPanel VerticalAlignment="Center">
+
+                                        <DataGrid x:Name="datagrid_FactuurBekijken"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  Width="750"
+                                                  Height="500"
+                                                  RowHeight="20"
+                                                  ColumnWidth="100"
+                                                  GridLinesVisibility="All"
+                                                  HeadersVisibility="All"
+                                                  Background="LightGray"
+                                                  RowBackground="White"
+                                                  AlternatingRowBackground="LightGray"/>
+
+                                    </StackPanel>
+                                </Grid>
 
                             </TabItem>
                         </TabControl>
