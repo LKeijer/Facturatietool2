@@ -48,17 +48,21 @@
                 <Border Padding="1">
                     <StackPanel Width="150"
                                 Margin="0 30">
-                        <!-- Klant Menu -->    
-                            <Button Content="Klant"
-                                    Click="Button_Click"
-                                    ContextMenuService.IsEnabled="False"
+                        <!-- Klant Menu -->
+                        <ComboBox>
+                            <ComboBoxItem>Nieuwe Klant</ComboBoxItem>
+                            <ComboBoxItem>Klant Bekijken</ComboBoxItem>
+                            <ComboBoxItem>Klant Aanpassen</ComboBoxItem>
+                        </ComboBox>
+                            <Button Click="Button_Click"
+                                    Content="Klant"
                                     HorizontalAlignment="Center"
                                     Width="125"
                                     Height="30"
                                     Margin="10">
                                 <Button.ContextMenu>
                                     <ContextMenu>
-                                        <MenuItem Header="Nieuwe Klant"/>
+                                        <MenuItem x:Name="BtnNieuweKlant" Click="BtnNieuweKlant_Click" Header="Nieuwe Klant"/>
                                         <MenuItem Header="Klant Bekijken"/>
                                         <MenuItem Header="Klant Aanpassen"/>
                                     </ContextMenu>
@@ -66,9 +70,8 @@
                             </Button>
 
                             <!-- Offerte Menu -->
-                            <Button Content="Offerte"
-                                    Click="Button_Click"
-                                    ContextMenuService.IsEnabled="False"
+                            <Button Click="Button_Click" 
+                                    Content="Offerte"
                                     HorizontalAlignment="Center"
                                     Width="125"
                                     Height="30"
@@ -82,9 +85,8 @@
                             </Button>
 
                         <!-- Factuur Menu -->
-                            <Button Content="Offerte"
-                                    Click="Button_Click"
-                                    ContextMenuService.IsEnabled="False"
+                            <Button Click="Button_Click" 
+                                    Content="Factuur"
                                     HorizontalAlignment="Center"
                                     Width="125"
                                     Height="30"
@@ -110,7 +112,7 @@
 
                         <TabControl x:Name="klanttabControl">
                             <!-- Nieuwe Klant -->
-                            <TabItem x:Name="tab_NieuweKlant" 
+                            <TabItem x:Name="tab_NieuweKlant"
                                      Header="Nieuwe Klant" 
                                      Visibility="Visible">
                                 <Grid>
