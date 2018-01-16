@@ -26,7 +26,7 @@ namespace Offerte_en_Facturatie_UI
           
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button1_Click(object sender, RoutedEventArgs e)
         {
             (sender as Button).ContextMenu.IsEnabled = true;
             (sender as Button).ContextMenu.PlacementTarget = (sender as Button);
@@ -34,9 +34,58 @@ namespace Offerte_en_Facturatie_UI
             (sender as Button).ContextMenu.IsOpen = true;
         }
 
+        
         private void BtnNieuweKlant_Click(object sender, RoutedEventArgs e)
         {
-           
+            klanttabControl.SelectedItem = tab_NieuweKlant;
+        }
+
+        private void BtnKlantBekijken_Click(object sender, RoutedEventArgs e)
+        {
+            klanttabControl.SelectedItem = tab_KlantBekijken;
+        }
+
+        private void BtnKlantAanpassen_Click(object sender, RoutedEventArgs e)
+        {
+            klanttabControl.SelectedItem = tab_KlantAanpassen;
+        }
+
+
+        private void Button2_Click(object sender, RoutedEventArgs e)
+        {
+            (sender as Button).ContextMenu.IsEnabled = true;
+            (sender as Button).ContextMenu.PlacementTarget = (sender as Button);
+            (sender as Button).ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+            (sender as Button).ContextMenu.IsOpen = true;
+        }
+
+        private void BtnNieuweOfferte_Click(object sender, RoutedEventArgs e)
+        {
+            offertetabControl.SelectedItem = tab_NieuweOfferte;
+        }
+
+        private void BtnOfferteBekijken_Click(object sender, RoutedEventArgs e)
+        {
+            offertetabControl.SelectedItem = tab_OfferteBekijken;
+        }
+
+
+        private void Button3_Click(object sender, RoutedEventArgs e)
+        {
+            (sender as Button).ContextMenu.IsEnabled = true;
+            (sender as Button).ContextMenu.PlacementTarget = (sender as Button);
+            (sender as Button).ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+            (sender as Button).ContextMenu.IsOpen = true;
+        }
+
+        private void BtnNieuweFactuur_Click(object sender, RoutedEventArgs e)
+        {
+            factuurtabControl.SelectedItem = tab_NieuweFactuur;
+        }
+
+        private void BtnFactuurBekijken_Click(object sender, RoutedEventArgs e)
+        {
+            factuurtabControl.SelectedItem = tab_FactuurBekijken;
         }
 
     }
