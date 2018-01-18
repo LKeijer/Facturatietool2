@@ -339,7 +339,7 @@
                                                     <Button x:Name="Form1_btnAccepteer" 
                                                         Content="Accepteer"
                                                         Background="LightBlue"
-                                                        Grid.Column="0"/>
+                                                        Grid.Column="0" Click="Form1_btnAccepteer_Click"/>
                                                     <!-- Annuleer -->
                                                     <Button x:Name="Form1_btnAnnuleer" 
                                                         Content="Annuleer"
