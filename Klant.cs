@@ -26,7 +26,7 @@ namespace Offerte_en_Facturatie_UI
             string huisNummer = main.Huisnummer;
             string postcode = main.Postcode;
             string plaats = main.Plaats;
-            string telefoon = main.Telefoon;
+            string telefoon = main.Telefoon; 
             string email = main.Email;
             string website = main.Website;
 
